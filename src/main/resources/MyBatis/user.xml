@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.library.dao.UserDao">
+
+    <select id="selectUserByUserName" resultType="com.library.bean.User">
+        select * from user where user_name = #{user_name} and password = #{password}
+    </select>
+    <select id="selectUserById" resultType="com.library.bean.User" parameterType="int">
+        select * from user where user_id = #{user_id}
+    </select>
+
+    <select id="selectUserByUserName2" resultType="com.library.bean.User" parameterType="String">
+        select * from user where user_name = #{user_name}
+    </select>
+    <select id="selectAllUser" resultType="com.library.bean.User">
+        select * from user
+    </select>
+    <select id="queryUser" resultType="com.library.bean.User" parameterType="String">
+        select * from user where user_realname like #{search}
+                                   or work_name like #{search} or address like #{search}
+    </select>
+
+    <update id="updatePassword" parameterType="com.library.bean.User">
+        update user set password = #{password}
+        where user_id = #{user_id}
+    </update>
+    <update id="updateUser" parameterType="com.library.bean.User">
+        update user set user_name = #{user_name},
+                        user_realname = #{user_realname},
+                        phone = #{phone},
+                        address = #{address},
+                        email = #{email},
+                        work_num = #{work_num},
+                        isregister = #{isregister},
+                        created_time = #{created_time},
+                        user_state = #{user_state},
+                        sex = #{sex},
+                        photo_path = #{photo_path},
+                        lastlogin_time = #{lastlogin_time},
+                        work_name = #{work_name}
+        where user_id = #{user_id}
+    </update>
+
+    <insert id="addUser" parameterType="com.library.bean.User"
+            useGeneratedKeys="true" keyProperty="user_id">
+        INSERT INTO user (user_name, password, user_realname, phone, address, email, work_num, isregister, created_time, sex, photo_path, user_state, lastlogin_time, work_name)
+        VALUES (#{user_name}, #{password}, #{user_realname}, #{phone}, #{address}, #{email}, #{work_num}, #{isregister}, #{created_time}, #{sex}, #{photo_path}, #{user_state}, #{lastlogin_time}, #{work_name})
+    </insert>
+
+</mapper>

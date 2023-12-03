@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.library.dao.BookCirculateDao">
+
+    <select id="selectBookCirculateById" resultType="com.library.bean.BookCirculate" parameterType="int">
+        select * from bookcirculate where book_id = #{book_id}
+    </select>
+
+    <select id="selectAllBookCirculate" resultType="com.library.bean.BookCirculate" >
+        select * from bookcirculate
+    </select>
+
+    <delete id="deleteBookCirculateById" parameterType="int">
+        DELETE FROM bookcirculate
+        WHERE book_id=#{book_id}
+    </delete>
+
+
+    <insert id="insertBookCirculate" parameterType="com.library.bean.BookCirculate">
+        INSERT INTO bookcirculate ( book_id, user_id, cir_state, cir_time, return_time, cir_reason, comment)
+        VALUES (#{book_id}, #{user_id}, #{cir_state}, #{cir_time}, #{return_time}, #{cir_reason}, #{comment})
+    </insert>
+
+    <update id="updateBookCirculate" parameterType="com.library.bean.BookCirculate">
+        UPDATE bookcirculate
+        SET
+            user_id = #{user_id},
+            cir_state = #{cir_state},
+            cir_time = #{cir_time},
+            return_time = #{return_time},
+            cir_reason = #{cir_reason},
+            comment = #{comment}
+        WHERE book_id = #{book_id}
+    </update>
+
+
+</mapper>

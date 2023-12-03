@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.library.dao.UserCharacterDao">
+
+    <select id="selectByUserId" resultType="com.library.bean.UserCharacter" parameterType="int">
+        select * from user_character where user_id = #{user_id}
+    </select>
+    <insert id="addUC" parameterType="com.library.bean.UserCharacter">
+        INSERT INTO user_character (user_id, character_id)
+        VALUES (#{user_id}, #{character_id})
+    </insert>
+    <delete id="deleteReaderCard" parameterType="long">
+        delete from reader_card where reader_id = #{reader_id}
+    </delete>
+</mapper>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.library.dao.WorkDao">
+
+    <select id="selectByWorkName" resultType="com.library.bean.Work" parameterType="String">
+        select * from work where work_name = #{work_name}
+    </select>
+    <select id="selectAllWork" resultType="com.library.bean.Work" >
+        select * from work
+    </select>
+    <update id="updateWork" parameterType="com.library.bean.Work">
+        UPDATE work
+        SET work_name = #{work_name},
+            contact = #{contact},
+            contact_phone = #{contact_phone},
+            contact_email = #{contact_email},
+            contact_address = #{contact_address},
+            work_nature = #{work_nature}
+        WHERE work_id = #{work_id}
+    </update>
+    <select id="queryWork" resultType="com.library.bean.Work" parameterType="String">
+        select * from work where contact like #{search}
+                              or work_name like #{search} or contact_address like #{search}
+    </select>
+    <delete id="deleteWorkByName" parameterType="String">
+        DELETE FROM work
+        WHERE work_name = #{work_name}
+    </delete>
+
+    <insert id="insertWork" parameterType="com.library.bean.Work">
+        INSERT INTO work (work_name, contact, contact_phone, contact_email, contact_address, work_nature)
+        VALUES (#{work_name}, #{contact}, #{contact_phone}, #{contact_email}, #{contact_address}, #{work_nature})
+    </insert>
+</mapper>

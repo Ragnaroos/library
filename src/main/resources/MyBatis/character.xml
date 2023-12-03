@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.library.dao.CharacterDao">
+    <!--    <select id="getIdMatchCount" resultType="int">-->
+    <!--        select count(*) from reader_card where-->
+    <!--            reader_id = #{reader_id} and password = #{password}-->
+    <!--    </select>-->
+    <select id="selectCharacterById" resultType="com.library.bean.character" parameterType="int">
+        select * from `character` where character_id = #{character_id}
+    </select>
+
+    <update id="updateCharacter" parameterType="com.library.bean.character">
+        update `character` set character_name = #{character_name}
+        where character_id = #{character_id}
+    </update>
+    <insert id="addCharacter" parameterType="com.library.bean.character"
+            useGeneratedKeys="true" keyProperty="character_id">
+        INSERT INTO `character` (character_name, created_time, character_state, comment)
+        VALUES (#{character_name}, #{created_time}, #{character_state}, #{comment})
+    </insert>
+    <delete id="deleteReaderCard" parameterType="long">
+        delete from reader_card where reader_id = #{reader_id}
+    </delete>
+</mapper>

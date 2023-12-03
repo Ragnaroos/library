@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Class-Path: commons-logging-1.2.jar spring-webmvc-4.2.2.RELEASE.jar aopa
+ lliance-1.0.jar mybatis-3.4.1.jar spring-core-4.2.2.RELEASE.jar spring-
+ jdbc-4.2.2.RELEASE.jar javax.servlet-api-3.1.0.jar commons-io-2.15.0.ja
+ r jackson-databind-2.9.9.jar spring-context-4.2.2.RELEASE.jar spring-be
+ ans-4.2.2.RELEASE.jar javax.mail.jar spring-expression-4.2.2.RELEASE.ja
+ r commons-pool-1.5.4.jar jstl-1.2.jar commons-fileupload-1.3.jar common
+ s-dbcp-1.4.jar mysql-connector-java-5.1.29.jar jackson-annotations-2.9.
+ 0.jar spring-aop-4.2.2.RELEASE.jar spring-tx-4.2.2.RELEASE.jar mybatis-
+ spring-1.3.0.jar spring-web-4.2.2.RELEASE.jar jackson-core-2.9.9.jar
+
